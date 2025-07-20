@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - WBS BRIK Mix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #2A5C8A;
+            color: white;
+            padding: 20px;
+        }
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 1rem 0;
+        }
+        .main {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+        }
+        .btn {
+            padding: 0.75rem 1.2rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #2A5C8A;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #1f476a;
+        }
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar">
+            <h1>WBS</h1>
+            <a href="#">Home</a>
+            <a href="#">Profile</a>
+            <a href="#">Pengaduan</a>
+        </div>
+        
+        <div class="main">
+            <h2>Profile User</h2>
+            <form action="/update-profile" method="post">
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required value="ryanherdiyana27@gmail.com" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Nomor Handphone *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Nomor Handphone">
+                </div>
+
+                <div class="form-group">
+                    <label for="nik">NIK</label>
+                    <input type="text" id="nik" name="nik" placeholder="NIK">
+                </div>
+
+                <div class="form-group">
+                    <label for="fullname">Nama Lengkap</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Nama Lengkap">
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Jenis Kelamin</label>
+                    <select id="gender" name="gender">
+                        <option value="">Pilih Jenis Kelamin</option>
+                        <option value="male">Laki-laki</option>
+                        <option value="female">Perempuan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Tanggal Lahir</label>
+                    <input type="date" id="dob" name="dob">
+                </div>
+
+                  <div style="display: flex; align-items: center;">
+                  <input type="checkbox" id="dataBenar" name="dataBenar">
+                <p
+                  <label for="dataBenar" style="margin-left: 8px;">Menyatakan bahwa data diri saya adalah benar.</label>
+                </div>
+  
+
+                <button type="submit" class="btn">Update</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

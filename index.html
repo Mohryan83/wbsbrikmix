@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WBS BRIK Mix - Sistem Pelaporan Terintegrasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2A5C8A; /* Biru BRIK */
+            --secondary: #F7931E; /* Oranye BRIK */
+            --dark: #1E3A5F;
+            --light: #F5F7FA;
+            --danger: #E74C3C;
+            --success: #2ECC71;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-text p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1920x1080/2A5C8A/F7931E?text=BRIK+Mix+Whistleblowing+System');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .about {
+            background-color: #fff;
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        
+        /* Report Form */
+        .report-form {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-group input {
+            margin-right: 0.5rem;
+        }
+        
+        /* Dashboard */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+        
+        .sidebar {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-nav a {
+            display: block;
+            padding: 0.8rem;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-nav a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+        
+        .sidebar-nav a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .main-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="C:\whistleblowing_app\foto\LOGO BRIK.jpg" class="logo" alt="Logo BRIK Mix - Perusahaan Ready Mix Beton">
+            <div class="logo-text">
+                <h1>Sistem WBS BRIK Mix</h1>
+                <p>Integritas | Transparansi | Akuntabilitas</p>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Beranda</a></li>
+            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">Pelaporan</a></li>
+            <li><a href="#">Statistik</a></li>
+            <li><a href="login.html">Login</a></li>
+
+        </ul>
+    </header>
+    
+    <section class="hero">
+        <h2>Sistem Pelaporan Pengaduan BRIK Mix</h2>
+        <p>Wadah resmi untuk menyampaikan pengaduan atas dugaan pelanggaran yang terjadi di lingkungan PT Bangun Rancang Indonesia Kita (BRIK Mix) dengan jaminan kerahasiaan dan perlindungan bagi pelapor</p>
+        <div class="button-group">
+            <a href="#report-form" class="btn btn-primary">Laporkan Sekarang</a>
+            <a href="#how-to-report" class="btn btn-secondary">Cara Melapor</a>
+        </div>
+    </section>
+    
+    <section class="container">
+        <div class="section-title">
+            <h2>Mengapa Melapor?</h2>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Proteksi Pelapor</h3>
+                <p>Sistem kami menjamin kerahasiaan identitas Anda sebagai pelapor sesuai dengan Peraturan yang berlaku</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Enkripsi Data</h3>
+                <p>Dengan teknologi enkripsi RSA 2048-bit, data laporan Anda aman dan hanya dapat dibaca oleh pihak berwenang di BRIK Mix</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🏗️</div>
+                <h3>Bangun Budaya Integritas</h3>
+                <p>Kontribusi Anda membantu menciptakan lingkungan kerja yang lebih baik sesuai visi BRIK Mix "Menjadi market leader yang inovatif dalam industri ready mix beton"</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Tentang WBS BRIK Mix</h2>
+                    <p>Sistem Whistleblowing BRIK Mix merupakan implementasi komitmen perusahaan dalam mewujudkan Good Corporate Governance dengan menerapkan prinsip-prinsip transparansi dan akuntabilitas.</p>
+                    <p>Sebagai perusahaan ready mix beton terkemuka dengan produksi lebih dari 1 juta m³ per tahun, BRIK Mix berkomitmen untuk menjaga integritas dalam seluruh operasional bisnis dan pembangunan infrastruktur strategis nasional.</p>
+                    <a href="#" class="btn btn-primary">Selengkapnya</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://placehold.co/600x400/2A5C8A/F7931E?text=Sistem+Integritas+BRIK+Mix" alt="Tentang Sistem Whistleblowing BRIK Mix - Perusahaan Ready Mix Beton dan Infrastruktur">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container" id="report-form">
+        <div class="section-title">
+            <h2>Formulir Pelaporan</h2>
+            <p>Pastikan Anda membaca <a href="#">Panduan Pelaporan</a> sebelum mengisi form ini</p>
+        </div>
+        
+        <form class="report-form" action="#" method="post">
+            <div class="form-group">
+                <label for="title">Judul Laporan*</label>
+                <input type="text" id="title" class="form-control" required placeholder="Contoh: Indikasi markup pembelian bahan baku beton">
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Kategori Laporan*</label>
+                <select id="category" class="form-control" required>
+                    <option value="">Pilih Kategori</option>
+                    <option value="corruption">Korupsi/Tindakan Merugikan Keuangan perusahaan</option>
+                    <option value="fraud">Fraud/Penyimpangan/Penipuan</option>
+                    <option value="health-safety">Pelanggaran K3/Keselamatan Kerja</option>
+                    <option value="ethics">Pelanggaran Etika/Kode Perilaku</option>
+                    <option value="environment">Pelanggaran Lingkungan</option>
+                    <option value="discrimination">Diskriminasi/Pelecehan</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="content">Isi Laporan*</label>
+                <textarea id="content" class="form-control" required placeholder="Jelaskan kronologis kejadian, waktu, tempat, dan pihak-pihak yang terlibat secara detail. Cantumkan juga bukti-bukti pendukung jika ada."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="files">Lampiran (Opsional)</label>
+                <input type="file" id="files" class="form-control" multiple>
+                <small>Format file: PDF, JPG, PNG, DOCX (Maks. 5MB per file)</small>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="anonymous" checked>
+                <label for="anonymous">Laporkan secara anonim</label>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Kirim Laporan</button>
+            </div>
+            
+            <div class="form-group">
+                <small>* Dengan mengirim laporan, Anda menyetujui <a href="#">Ketentuan Penggunaan</a> sistem WBS BRIK Mix</small>
+            </div>
+        </form>
+    </section>
+    
+    <section class="container" id="how-to-report">
+        <div class="section-title">
+            <h2>Alur Pelaporan</h2>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">1</div>
+                <h3>Isi Formulir</h3>
+                <p>Sampaikan laporan Anda melalui form online ini dengan data selengkap mungkin</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">2</div>
+                <h3>Verifikasi</h3>
+                <p>Tim Investigasi BRIK Mix akan memverifikasi dan mengevaluasi laporan Anda</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">3</div>
+                <h3>Tindak Lanjut</h3>
+                <p>Laporan yang memenuhi kriteria akan diproses sesuai SOP Whistleblowing BRIK Mix</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Kebijakan Privasi</a>
+                <a href="#">FAQ</a>
+                <a href="#">Kontak Kami</a>
+                <a href="#">Statistik Laporan</a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#">Integritas Perusahaan</a>
+                <a href="#">Kode Etik BRIK Mix</a>
+                <a href="#">Profil Perusahaan</a>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 PT Bangun Rancang Indonesia Kita (BRIK Mix) - Whistleblowing System</p>
+                <p>Jl. Raya Legok - Karawaci No.KM. 5 Legok, Kec. Legok Tangerang, Banten 15820 Indonesia | Telp: 0882-0000-03003 </p>
+                <p>Sistem ini dikelola oleh Tim Integritas BRIK Mix</p>
+            </div>
+            
+            <div class="logo-container" style="justify-content: center; margin-top: 2rem;">
+                <img src="C:\whistleblowing_app\foto\Logo BRIKMix.jpg" alt="Logo Resmi PT Bangun Rancang Indonesia Kita (BRIK Mix)">
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple JavaScript for demo purposes
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih telah menyampaikan laporan Anda. Nomor tiket laporan Anda adalah WBS-' + Math.floor(Math.random() * 10000) + '. Harap catat nomor ini untuk tracking laporan.');
+        });
+    </script>
+</body>
+</html>

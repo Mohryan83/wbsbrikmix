@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f9;
+}
+
+.sidebar {
+  width: 200px;
+  background: #112d55;
+  height: 100vh;
+  position: fixed;
+  color: white;
+}
+
+.sidebar .logo {
+  text-align: center;
+  padding: 1rem;
+}
+
+.sidebar .logo img {
+  width: 50px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 1rem;
+}
+
+.sidebar ul li.active,
+.sidebar ul li:hover {
+  background-color: #0c1f3f;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.main-content {
+  margin-left: 200px;
+  padding: 2rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #666;
+}
+
+.user-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  width: 200px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.user-menu:hover .user-dropdown {
+  display: block;
+}
+
+.profile-form {
+  background-color: white;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.profile-form h2 {
+  margin-bottom: 1rem;
+}
+
+.profile-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.profile-form input,
+.profile-form select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.profile-form .checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.profile-form .checkbox input {
+  margin-right: 0.5rem;
+}
+
+.profile-form button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background-color: #112d55;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
